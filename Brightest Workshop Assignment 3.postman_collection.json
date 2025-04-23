@@ -1,110 +1,127 @@
 {
 	"info": {
-		"_postman_id": "cad9683d-628b-4f61-877a-05e941ab31b0",
-		"name": "Brightest Workshop Assignment 3",
+		"_postman_id": "dbb23027-40c6-4390-ba75-9099e4dbeed5",
+		"name": "Brightest Workshop",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "33089695"
 	},
 	"item": [
 		{
-			"name": "CreateUser",
-			"event": [
+			"name": "Assignment 1",
+			"item": [
 				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Expected response code is 201\", function(){\r",
-							"    pm.expect(pm.response.code).to.equal(201)\r",
-							"})\r",
-							"\r",
-							"pm.test(\"Status code name is Created\", function(){\r",
-							"    pm.expect(pm.response.status).to.eql(\"Created\")\r",
-							"})\r",
-							"\r",
-							"pm.test(\"Response is within 300ms\", function(){\r",
-							"    pm.expect(pm.response.responseTime).to.be.below(300)\r",
-							"})\r",
-							"\r",
-							"pm.test(\"Does response contain id, firstname and lastname\", function () {\r",
-							"    const jsonData = pm.response.json();\r",
-							"\r",
-							"    pm.expect(jsonData).to.have.property(\"id\");\r",
-							"    pm.expect(jsonData).to.have.property(\"firstName\");\r",
-							"    pm.expect(jsonData).to.have.property(\"lastName\");\r",
-							"});\r",
-							"\r",
-							"\r",
-							"pm.test(\"Does header contain Content-Type\", function () {\r",
-							"    pm.expect(pm.response.headers.has(\"Content-Type\")).to.be.true;\r",
-							"});"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
-			],
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"id\": {{customerid}},\r\n  \"customerNumber\": {{customerid}},\r\n  \"firstName\": \"{{$randomFirstName}}\",\r\n  \"lastName\": \"{{$randomLastName}}\",\r\n  \"email\": \"{{$randomEmail}}\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+					"name": "customer2",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://new.brightest.academy/api/customers/2",
+							"protocol": "https",
+							"host": [
+								"new",
+								"brightest",
+								"academy"
+							],
+							"path": [
+								"api",
+								"customers",
+								"2"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "{{brightesturl}}/api/customers",
-					"host": [
-						"{{brightesturl}}"
-					],
-					"path": [
-						"api",
-						"customers"
-					]
+				{
+					"name": "customer10",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://new.brightest.academy/api/customers/10",
+							"protocol": "https",
+							"host": [
+								"new",
+								"brightest",
+								"academy"
+							],
+							"path": [
+								"api",
+								"customers",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "allCustomers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://new.brightest.academy/api/customers",
+							"protocol": "https",
+							"host": [
+								"new",
+								"brightest",
+								"academy"
+							],
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "GetUser",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "{{brightesturl}}/api/customers/{{customerid}}",
-					"host": [
-						"{{brightesturl}}"
-					],
-					"path": [
-						"api",
-						"customers",
-						"{{customerid}}"
-					]
+			"name": "Assignment 2",
+			"item": [
+				{
+					"name": "Orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://new.brightest.academy/api/orders",
+							"protocol": "https",
+							"host": [
+								"new",
+								"brightest",
+								"academy"
+							],
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://new.brightest.academy/api/products",
+							"protocol": "https",
+							"host": [
+								"new",
+								"brightest",
+								"academy"
+							],
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
-		},
-		{
-			"name": "DeleteUser",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{brightesturl}}/api/customers/{{customerid}}",
-					"host": [
-						"{{brightesturl}}"
-					],
-					"path": [
-						"api",
-						"customers",
-						"{{customerid}}"
-					]
-				}
-			},
-			"response": []
+			]
 		}
 	],
 	"event": [
@@ -131,8 +148,8 @@
 	],
 	"variable": [
 		{
-			"key": "customerid",
-			"value": "38501438",
+			"key": "brighturl",
+			"value": "https://new.brightest.academy",
 			"type": "string"
 		}
 	]
