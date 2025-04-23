@@ -12,4 +12,4 @@ jobs:
       - uses: actions/checkout@master
       - uses: matt-ball/newman-action@master
         with:
-          collection: postman_collection.json
+          collection: Brightest Workshop Assignment 3.postman_collection.json
