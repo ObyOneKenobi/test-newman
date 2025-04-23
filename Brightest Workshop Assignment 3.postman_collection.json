@@ -1,0 +1,139 @@
+{
+	"info": {
+		"_postman_id": "cad9683d-628b-4f61-877a-05e941ab31b0",
+		"name": "Brightest Workshop Assignment 3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33089695"
+	},
+	"item": [
+		{
+			"name": "CreateUser",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Expected response code is 201\", function(){\r",
+							"    pm.expect(pm.response.code).to.equal(201)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Status code name is Created\", function(){\r",
+							"    pm.expect(pm.response.status).to.eql(\"Created\")\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response is within 300ms\", function(){\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(300)\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Does response contain id, firstname and lastname\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"\r",
+							"    pm.expect(jsonData).to.have.property(\"id\");\r",
+							"    pm.expect(jsonData).to.have.property(\"firstName\");\r",
+							"    pm.expect(jsonData).to.have.property(\"lastName\");\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Does header contain Content-Type\", function () {\r",
+							"    pm.expect(pm.response.headers.has(\"Content-Type\")).to.be.true;\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": {{customerid}},\r\n  \"customerNumber\": {{customerid}},\r\n  \"firstName\": \"{{$randomFirstName}}\",\r\n  \"lastName\": \"{{$randomLastName}}\",\r\n  \"email\": \"{{$randomEmail}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{brightesturl}}/api/customers",
+					"host": [
+						"{{brightesturl}}"
+					],
+					"path": [
+						"api",
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetUser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{brightesturl}}/api/customers/{{customerid}}",
+					"host": [
+						"{{brightesturl}}"
+					],
+					"path": [
+						"api",
+						"customers",
+						"{{customerid}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteUser",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{brightesturl}}/api/customers/{{customerid}}",
+					"host": [
+						"{{brightesturl}}"
+					],
+					"path": [
+						"api",
+						"customers",
+						"{{customerid}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "customerid",
+			"value": "38501438",
+			"type": "string"
+		}
+	]
+}
