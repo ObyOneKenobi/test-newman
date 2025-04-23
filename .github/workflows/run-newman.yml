@@ -1,0 +1,15 @@
+name: Newman Run
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  newman:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: matt-ball/newman-action@master
+        with:
+          collection: Brightest Workshop Assignment 3.postman_collection.json
