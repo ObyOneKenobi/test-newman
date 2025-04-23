@@ -16,8 +16,7 @@ jobs:
       - name: Run Newman Tests
         uses: matt-ball/newman-action@v2.0.0
         with:
-          collection: path/to/your-collection.postman_collection.json
-          environment: path/to/your-environment.postman_environment.json
+          collection: Brightest Workshop Assignment 3.postman_collection.json
           reporters: cli, junit
           reporter-options: junit-export=results.xml
 
