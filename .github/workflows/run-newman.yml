@@ -1,27 +1,15 @@
-name: Run Postman Tests
+name: Newman Run
 
 on:
-  push:
-    branches: [main]
   pull_request:
+    branches:
+    - master
 
 jobs:
-  newman-tests:
+  newman:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Run Newman Tests
-        uses: matt-ball/newman-action@v2.0.0
+      - uses: actions/checkout@master
+      - uses: matt-ball/newman-action@master
         with:
-          collection: Brightest Workshop Assignment 3.postman_collection.json
-          reporters: cli, junit
-          reporter-options: junit-export=results.xml
-
-      - name: Upload Test Results (Optional)
-        uses: actions/upload-artifact@v4
-        with:
-          name: postman-results
-          path: results.xml
+          collection: postman_collection.json
